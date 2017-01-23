@@ -53,8 +53,6 @@ public func |> <Data: DataType>(data: Data, file: File<Data>) throws {
     try file.write(data)
 }
 
-
-
 // MARK: - TextFile
 
 /// Returns `true` if both text files have the same path and encoding.
@@ -163,7 +161,6 @@ public func += (inout lhs: Path, rhs: String) {
     lhs = lhs + rhs
 }
 
-
 /// Concatenates two `Path` instances and returns the result.
 @warn_unused_result
 public func / (lhs: Path, rhs: Path) -> Path {
@@ -205,7 +202,7 @@ public func <^> (lhs: Path, rhs: Path) -> Path {
 infix operator </> {}
 
 /// Runs `closure` with the path as its current working directory.
-public func </> (path: Path, @noescape closure: () throws -> ()) rethrows {
+public func </> (path: Path, @noescape closure: () throws -> Void) rethrows {
     try path.changeDirectory(closure)
 }
 
@@ -266,7 +263,6 @@ public func ->! <Data: DataType>(lhs: File<Data>, rhs: Path) throws {
     }
     try lhs ->> rhs
 }
-
 
 infix operator +>> {}
 
@@ -410,7 +406,6 @@ postfix operator * {}
 public postfix func * (path: Path) -> Path {
     return path.resolved
 }
-
 
 postfix operator ^ {}
 

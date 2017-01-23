@@ -69,13 +69,11 @@ public struct Path: StringLiteralConvertible, RawRepresentable, Hashable, Indexa
         weak var delegate: NSFileManagerDelegate?
         /// Safe way to use fileManager
         var fileManager: NSFileManager {
-            get {
 //                if delegate == nil {
 //                    print("\n\nDelegate is nil\n\n")
 //                }
-                unsafeFileManager.delegate = delegate
-                return unsafeFileManager
-            }
+            unsafeFileManager.delegate = delegate
+            return unsafeFileManager
         }
     }
 
@@ -107,20 +105,16 @@ public struct Path: StringLiteralConvertible, RawRepresentable, Hashable, Indexa
 
     /// The standardized path string value
     public var standardRawValue: String {
-        get {
-            return (self.rawValue as NSString).stringByStandardizingPath
-        }
+        return (self.rawValue as NSString).stringByStandardizingPath
     }
 
     /// The standardized path string value without expanding tilde
     public var standardRawValueWithTilde: String {
-        get {
-            let comps = components
-            if comps.isEmpty {
-                return ""
-            } else {
-                return self[comps.count - 1].rawValue
-            }
+        let comps = components
+        if comps.isEmpty {
+            return ""
+        } else {
+            return self[comps.count - 1].rawValue
         }
     }
 
@@ -172,13 +166,11 @@ public struct Path: StringLiteralConvertible, RawRepresentable, Hashable, Indexa
 
     /// The standardized path string value without expanding tilde
     public var standardWithTilde: Path {
-        get {
-            let comps = components
-            if comps.isEmpty {
-                return Path("")
-            } else {
-                return self[comps.count - 1]
-            }
+        let comps = components
+        if comps.isEmpty {
+            return Path("")
+        } else {
+            return self[comps.count - 1]
         }
     }
 
@@ -354,7 +346,7 @@ extension Path {
     ///
     /// - Parameter closure: The block to run while `Path.Current` is changed.
     ///
-    public func changeDirectory(@noescape closure: () throws -> ()) rethrows {
+    public func changeDirectory(@noescape closure: () throws -> Void) rethrows {
         let previous = Path.Current
         defer { Path.Current = previous }
         if _fmWraper.fileManager.changeCurrentDirectoryPath(_safeRawValue) {
@@ -835,7 +827,7 @@ extension Path {
 
     /// Modify one attribute
     private func _setAttribute(key: String, value: AnyObject) throws {
-        try _setAttributes([key : value])
+        try _setAttributes([key: value])
     }
 
     /// The creation date of the file at the path.
@@ -1085,7 +1077,6 @@ extension Path: CustomStringConvertible {
 
 }
 
-
 extension Path: CustomDebugStringConvertible {
 
     // MARK: - CustomDebugStringConvertible
@@ -1107,7 +1098,6 @@ extension Path: SequenceType {
     }
 
 }
-
 
 extension Path {
 
@@ -1256,8 +1246,7 @@ extension Path {
         return _pathsInDomains(directory, .SystemDomainMask)[0]
     }
 
-    private static func _pathsInDomains(directory: NSSearchPathDirectory,
-        _ domainMask: NSSearchPathDomainMask) -> [Path] {
+    private static func _pathsInDomains(directory: NSSearchPathDirectory, _ domainMask: NSSearchPathDomainMask) -> [Path] {
         return NSSearchPathForDirectoriesInDomains(directory, domainMask, true)
             .map({ Path($0).standardized })
     }

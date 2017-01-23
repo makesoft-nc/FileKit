@@ -52,7 +52,6 @@ public struct FileSystemEvent {
     public var flags: FileSystemEventFlags
 }
 
-
 extension Path {
 
     // MARK: - Watching
@@ -69,7 +68,6 @@ extension Path {
         return watcher
     }
 }
-
 
 extension SequenceType where Self.Generator.Element == Path {
 
@@ -89,8 +87,6 @@ extension SequenceType where Self.Generator.Element == Path {
     }
 
 }
-
-
 
 /// A set of fileystem event flags.
 public struct FileSystemEventFlags: OptionSetType, CustomStringConvertible, CustomDebugStringConvertible {
@@ -222,7 +218,7 @@ public struct FileSystemEventFlags: OptionSetType, CustomStringConvertible, Cust
             "ItemRemoved",      "ItemInodeMetaMod",     "ItemRenamed",
             "ItemModified",     "ItemFinderInfoMod",    "ItemChangeOwner",
             "ItemXattrMod",     "ItemIsFile",           "ItemIsDir",
-            "ItemIsSymlink",    "OwnEvent",
+            "ItemIsSymlink",    "OwnEvent"
         ] // swiftlint:enable comma
         if #available(iOS 9, OSX 10.10, *) {
             array += ["ItemIsHardlink", "ItemIsLastHardlink"]
@@ -267,7 +263,6 @@ public struct FileSystemEventFlags: OptionSetType, CustomStringConvertible, Cust
     public init(rawValue: Int) { self.rawValue = rawValue }
 
 }
-
 
 /// Flags for creating an event stream.
 public struct FileSystemEventStreamCreateFlags: OptionSetType, CustomStringConvertible, CustomDebugStringConvertible {

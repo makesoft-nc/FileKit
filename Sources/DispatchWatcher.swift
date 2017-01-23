@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 /// Delegate for `DispatchVnodeWatcher`
 public protocol DispatchVnodeWatcherDelegate: class {
 
@@ -303,8 +301,6 @@ public class DispatchVnodeWatcher {
         self.fileDescriptor = -1
         self.source = nil
     }
-
-
 }
 
 extension Path {

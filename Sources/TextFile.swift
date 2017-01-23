@@ -83,8 +83,7 @@ extension TextFile {
     ///
     /// - Returns: the `TextFileStreamReader`
     @warn_unused_result
-    public func streamReader(delimiter: String = "\n",
-        chunkSize: Int = 4096) -> TextFileStreamReader? {
+    public func streamReader(delimiter: String = "\n", chunkSize: Int = 4096) -> TextFileStreamReader? {
             return TextFileStreamReader(
                 path: self.path,
                 delimiter: delimiter,
@@ -100,8 +99,7 @@ extension TextFile {
     /// - Parameter options: optional options  for string comparaison
     ///
     /// - Returns: the lines
-    public func grep(motif: String, include: Bool = true,
-        options: NSStringCompareOptions = []) -> [String] {
+    public func grep(motif: String, include: Bool = true, options: NSStringCompareOptions = []) -> [String] {
             guard let reader = streamReader() else {
                 return []
             }
@@ -203,14 +201,14 @@ public class TextFileStreamReader {
     }
 
     /// Start reading from the beginning of file.
-    public func rewind() -> Void {
+    public func rewind() {
         fileHandle?.seekToFileOffset(0)
         buffer.length = 0
         atEOF = false
     }
 
     /// Close the underlying file. No reading must be done after calling this method.
-    public func close() -> Void {
+    public func close() {
         fileHandle?.closeFile()
     }
 

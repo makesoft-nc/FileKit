@@ -30,8 +30,6 @@ import Foundation
 /// A type that can be used to read from and write to File instances.
 public typealias DataType = protocol<Readable, Writable>
 
-
-
 /// A type that can be used to read from File instances.
 public protocol Readable {
 
@@ -54,8 +52,6 @@ extension Readable {
     }
 
 }
-
-
 
 /// A type that can be used to write to File instances.
 public protocol Writable {
@@ -105,8 +101,6 @@ public protocol WritableToFile: Writable {
 
 }
 
-
-
 extension WritableToFile {
 
     /// Writes `self` to a Path.
@@ -126,8 +120,6 @@ extension WritableToFile {
     }
 
 }
-
-
 
 /// A type that can be converted to a Writable.
 public protocol WritableConvertible: Writable {

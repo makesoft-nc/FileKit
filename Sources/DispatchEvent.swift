@@ -24,7 +24,6 @@ public struct DispatchSourceType {
 
 }
 
-
 /// Vnode Events.
 public struct DispatchVnodeEvents: OptionSetType, CustomStringConvertible, CustomDebugStringConvertible {
 
