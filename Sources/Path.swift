@@ -24,7 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  swiftlint:disable file_length
+//  swiftlint:disable superfluous_disable_command file_length
 //
 
 import Foundation
@@ -491,7 +491,7 @@ extension Path {
         }
     }
 
-    // swiftlint:disable line_length
+    // swiftlint:disable superfluous_disable_command line_length
 
     /// Returns paths in `self` that match a condition.
     ///
@@ -639,7 +639,7 @@ extension Path {
         }
     }
 
-    // swiftlint:disable line_length
+    // swiftlint:disable superfluous_disable_command line_length
 
     /// Creates a directory at the path.
     ///

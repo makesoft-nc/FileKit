@@ -24,7 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  swiftlint:disable line_length
+//  swiftlint:disable superfluous_disable_command line_length
 //
 
 /// Information regarding [FileKit](https://github.com/nvzqz/FileKit).
